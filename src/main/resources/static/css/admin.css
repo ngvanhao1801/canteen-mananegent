@@ -1,0 +1,192 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');*/
+
+* {
+    /*font-family: 'Ubuntu', sans-serif;*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #2a2185;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black: #222;
+    --black2: #999;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.navigation{
+    position: fixed;
+    margin-left: 0;
+    width: 270px;
+    height: 100%;
+    background: dodgerblue;
+    border-left: 10px solid dodgerblue;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.navigation ul {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 100%;
+}
+
+.navigation ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover{
+    background: #1e0bec;
+}
+
+.navigation ul li:nth-child(1){
+    margin-bottom: 10px;
+    pointer-events: none;
+}
+
+.navigation ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: white;
+}
+
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 75px;
+    text-align: center;
+}
+
+.navigation ul li a .icon ion-icon {
+    font-size: 1.75rem;
+}
+
+.navigation ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+
+/*--Main--*/
+.main {
+    position: absolute;
+    width: calc(100% - 270px);
+    left: 270px;
+    min-height: 100vh;
+    background: var(--gray);
+    transition: 0.5s;
+}
+
+.topbar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    background: #9bcef5;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.toggle .title {
+    padding: 0 10px;
+    font-size: 30px;
+    height: 60px;
+    color: blue;
+    line-height: 60px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.user {
+    display: flex;
+    color: black;
+}
+
+.user .icon {
+    min-width: 60px;
+    height: 60px;
+    line-height: 75px;
+    text-align: right;
+}
+
+.user .icon ion-icon {
+    font-size: 1.75rem;
+}
+
+.user .title {
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.categories-content {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    font-size: 20px;
+    color: #1e0bec;
+}
+
+.detail {
+    position: relative;
+    width: 95%;
+    margin-left: 20px;
+    padding: 20px;
+    display: grid;
+    grid-gap: 15px;
+    min-height: 40px;
+    background: white;
+    overflow-x:auto;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+}
+
+.detail table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.detail th, .detail td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.detail th {
+    background-color: #bcf5fc; /* Màu nền của tiêu đề cột */
+}
+
+.detail tr:nth-child(even) {
+    background-color: #dcf4f8; /* Màu nền của các hàng chẵn */
+}
+
+.detail tr:hover {
+    background-color: #d9f4f8; /* Màu nền khi di chuột qua hàng */
+}

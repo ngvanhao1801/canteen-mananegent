@@ -1,0 +1,10 @@
+.logout a {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Loại bỏ gạch chân của liên kết */
+}
+
+.icon {
+    margin-right: 5px; /* Khoảng cách giữa biểu tượng và văn bản */
+    margin-top: 5px;
+}
