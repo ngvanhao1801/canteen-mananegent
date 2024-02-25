@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 @EnableJpaRepositories
-public interface UserReponsitory extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, Integer> {
   User getUserByEmail(String email);
 
   User findUserByEmail(String email);
@@ -19,4 +19,8 @@ public interface UserReponsitory extends JpaRepository<User, Integer> {
       value = "select * from dbo_users",
       nativeQuery = true)
   List<User> getAllUser();
+
+  User getUserById(int id);
+
+  boolean existsByEmail(String email);
 }

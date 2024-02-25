@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Product</title>
     <link rel="stylesheet" type="text/css" href="/static/css/admin.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-
 <body>
 <div class="container">
     <div class="navigation">
@@ -39,7 +39,7 @@
                 </a>
             </li>
             <li>
-                <a href="/product">
+                <a href="/products">
                         <span class="icon">
                             <ion-icon name="pizza"></ion-icon>
                         </span>
@@ -47,7 +47,7 @@
                 </a>
             </li>
             <li>
-                <a href="/available_publisher">
+                <a href="/ingredients">
                         <span class="icon">
                             <ion-icon name="leaf-outline"></ion-icon>
                         </span>
@@ -97,7 +97,6 @@
         </ul>
     </div>
 </div>
-<script src="/static/js/app.js"></script>
 <div class="main">
     <div class="topbar">
         <div class="toggle">
@@ -121,6 +120,13 @@
         </script>
 
     </div>
+<!--    <div class="text-center">-->
+<!--        <form class="form-inline mt-2 mt-md-0" method="get" action="#">-->
+<!--            <input class="form-control mr-sm-2" type="text" placeholder="Tìm kiếm" aria-label="Search"-->
+<!--                   name="keyword_tensanpham">-->
+<!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>-->
+<!--        </form>-->
+<!--    </div>-->
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading" style="text-align: center; color: #0f6674">Danh sách Món ăn</h1>
@@ -128,65 +134,48 @@
     </section>
     <div class="col-md-3">
         <div class="text-right">
-            <a href="/product/add" class="btn btn-primary" style="margin-right: 20px">Thêm Món Ăn</a>
+            <a href="add_product" class="btn btn-primary" style="margin-right: 20px">Thêm Món Ăn</a>
         </div>
     </div>
-
-    <div th:if="${showForm}" style="align-self: start; margin-left: 8%; padding: 5px;">
-        <label for="">Tên món ăn</label>
-    </div>
-    <div th:if="${showForm}" style="width: 80%;">
-        <input class="nameFood" placeholder="Nhập tên món ăn" style="width:100%;padding: 5px;" type="text">
-    </div>
-
-    <div th:if="${showForm}" style="align-self: start;margin-left: 8%;padding: 5px;">
-        <label for="">Nhập mô tả</label>
-    </div>
-    <div th:if="${showForm}" style="width: 80%;">
-        <input class="descripts" placeholder="Nhập mô tả" style="width:100%;padding: 5px;" type="text">
-    </div>
-    <div th:if="${showForm}" style="align-self: start;margin-left: 8%;padding: 5px;">
-        <label for="">Nhập Category</label>
-    </div>
-    <div th:if="${showForm}" style="width: 80%;">
-        <input class="categoryFood" placeholder="Nhập Category" style="width:100%;padding: 5px;" type="text">
-    </div>
-
-    <div th:if="${showForm}" style="width: 80%;display: flex;justify-content: center;margin-top: 100px; cursor: pointer;">
-        <button onclick="handlehide()"
-                style="cursor: pointer;border-radius: 5px;margin:0 12px;border: none; padding: 10px 40px;background-color: #00933b47;">
-            Hủy
-        </button>
-        <button onclick="addFood()"
-                style="cursor: pointer;border-radius: 5px; margin:0 12px;border: none; padding: 10px 40px;background-color: #00933ba3;">
-            Thêm
-        </button>
-    </div>
-
     <div class="py-5 bg-light" style="margin-left: 50px; margin-right: 100px; margin-top: 30px">
         <div class="container">
             <div class="row">
                 <div th:each="product : ${products}" class="col-md-4">
                     <div class="card mb-4 shadow-sm">
-                        <a th:href="@{/product/detail/{id}(id=${product.id})}">
-                            <img th:src="@{/static/images/product/{imageFileName}(imageFileName=${product.image})}"
+                        <a>
+                            <img th:if="${product.image}"
+                                 src="@{'/productImage?id=' + ${product.id}}"
                                  class="bd-placeholder-img card-img-top" width="100%" height="200" alt="Product Image">
+                            <img th:unless="${product.image != null}" src="/static/images/canteen.jpg"
+                                 class="bd-placeholder-img card-img-top" width="100%" height="200" alt="Default Image">
                         </a>
+
                         <div class="card-body">
-                            <a th:href="@{/product/detail/{id}(id=${product.id})}">
-                                <h5 th:text="${product.name}">Product Name</h5>
+                            <a>
+                                <h5 th:text="${product.name}">Tên món ăn</h5>
                             </a>
-                            <p th:text="${product.description}">Product Description</p>
-                            <div class="d-flex justify-content-between align-items-center">
+                            <p th:text="${product.description}">Miêu tả món ăn</p>
+                            <div>
                                 <div class="btn-group">
-                                    <a th:href="@{/product/detail/{id}(id=${product.id})}"
+                                    <a href="#"
                                        class="btn btn-sm btn-outline-secondary">Xem chi tiết</a>
                                 </div>
-                                <br>
-                                <small class="text-right">
-                                    <b th:text="'&#x20AB;' + ${product.price}">Sale Price</b>
-                                </small>
                             </div>
+                            <div class="d-flex ">
+                                <small><b th:text="'&#x20AB;' + ${product.price}">Giá: </b></small>
+                                <div>
+                                    <a style="color:blue; margin-right: 20px; text-decoration: none; margin-left: 200px"
+                                       th:href="@{/editProduct/{id}(id=${product.id})}">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a style="color:red;" th:href="@{/deleteProduct/{id}(id=${product.id})}"
+                                       onclick="if (!(confirm('Bạn có chắc chắn muốn xóa thông tin món ăn này?'))) return false">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -194,254 +183,8 @@
         </div>
     </div>
 
-    <!--    <div class="py-5 bg-light" style="margin-left: 50px; margin-right: 100px">-->
-    <!--        <div class="container">-->
-    <!--            <div class="row">-->
-    <!--                <div class="col-md-4">-->
-    <!--                    <div class="card mb-4 shadow-sm">-->
-    <!--                        <a href="product-detail.html">-->
-    <!--                            <img class="bd-placeholder-img card-img-top" width="100%" height="200"-->
-    <!--                                 src="/static/images/product/samsung-s3.webp">-->
-    <!--                        </a>-->
-    <!--                        <div class="card-body">-->
-    <!--                            <a href="product-detail.html">-->
-    <!--                                <h5>Samsung Galaxy S3</h5>-->
-    <!--                            </a>-->
-    <!--                            <h6>Điện thoại</h6>-->
-    <!--                            <p class="card-text">Sản phẩm của Samsung năm 2013</p>-->
-    <!--                            <div class="d-flex justify-content-between align-items-center">-->
-    <!--                                <div class="btn-group">-->
-    <!--                                    <a class="btn btn-sm btn-outline-secondary" href="product-detail.html">Xem-->
-    <!--                                        chi tiết</a>-->
-    <!--                                </div>-->
-    <!--                                <small class="text-muted text-right">-->
-    <!--                                    <s>12,600,000.00</s>-->
-    <!--                                    <b>12,000,000.00 vnđ</b>-->
-    <!--                                </small>-->
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-
-    <!--                <div class="col-md-4">-->
-    <!--                    <div class="card mb-4 shadow-sm">-->
-    <!--                        <a href="product-detail.html">-->
-    <!--                            <img class="bd-placeholder-img card-img-top" width="100%" height="200"-->
-    <!--                                 src="/static/images/product/samsung-s3.webp">-->
-    <!--                        </a>-->
-    <!--                        <div class="card-body">-->
-    <!--                            <a href="product-detail.html">-->
-    <!--                                <h5>Samsung Galaxy S3</h5>-->
-    <!--                            </a>-->
-    <!--                            <h6>Điện thoại</h6>-->
-    <!--                            <p class="card-text">Sản phẩm của Samsung năm 2013</p>-->
-    <!--                            <div class="d-flex justify-content-between align-items-center">-->
-    <!--                                <div class="btn-group">-->
-    <!--                                    <a class="btn btn-sm btn-outline-secondary" href="product-detail.html">Xem-->
-    <!--                                        chi tiết</a>-->
-    <!--                                </div>-->
-    <!--                                <small class="text-muted text-right">-->
-    <!--                                    <s>12,600,000.00</s>-->
-    <!--                                    <b>12,000,000.00 vnđ</b>-->
-    <!--                                </small>-->
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-
-    <!--                <div class="col-md-4">-->
-    <!--                    <div class="card mb-4 shadow-sm">-->
-    <!--                        <a href="product-detail.html">-->
-    <!--                            <img class="bd-placeholder-img card-img-top" width="100%" height="200"-->
-    <!--                                 src="/static/images/product/samsung-s3.webp">-->
-    <!--                        </a>-->
-    <!--                        <div class="card-body">-->
-    <!--                            <a href="product-detail.html">-->
-    <!--                                <h5>Samsung Galaxy S3</h5>-->
-    <!--                            </a>-->
-    <!--                            <h6>Điện thoại</h6>-->
-    <!--                            <p class="card-text">Sản phẩm của Samsung năm 2013</p>-->
-    <!--                            <div class="d-flex justify-content-between align-items-center">-->
-    <!--                                <div class="btn-group">-->
-    <!--                                    <a class="btn btn-sm btn-outline-secondary" href="product-detail.html">Xem-->
-    <!--                                        chi tiết</a>-->
-    <!--                                </div>-->
-    <!--                                <small class="text-muted text-right">-->
-    <!--                                    <s>12,600,000.00</s>-->
-    <!--                                    <b>12,000,000.00 vnđ</b>-->
-    <!--                                </small>-->
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </div>-->
-
-    <!--            <div class="row">-->
-    <!--                <div class="col-md-4">-->
-    <!--                    <div class="card mb-4 shadow-sm">-->
-    <!--                        <a href="product-detail.html">-->
-    <!--                            <img class="bd-placeholder-img card-img-top" width="100%" height="200"-->
-    <!--                                 src="/static/images/product/samsung-s3.webp">-->
-    <!--                        </a>-->
-    <!--                        <div class="card-body">-->
-    <!--                            <a href="product-detail.html">-->
-    <!--                                <h5>Samsung Galaxy S3</h5>-->
-    <!--                            </a>-->
-    <!--                            <h6>Điện thoại</h6>-->
-    <!--                            <p class="card-text">Sản phẩm của Samsung năm 2013</p>-->
-    <!--                            <div class="d-flex justify-content-between align-items-center">-->
-    <!--                                <div class="btn-group">-->
-    <!--                                    <a class="btn btn-sm btn-outline-secondary" href="product-detail.html">Xem-->
-    <!--                                        chi tiết</a>-->
-    <!--                                </div>-->
-    <!--                                <small class="text-muted text-right">-->
-    <!--                                    <s>12,600,000.00</s>-->
-    <!--                                    <b>12,000,000.00 vnđ</b>-->
-    <!--                                </small>-->
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-
-    <!--                <div class="col-md-4">-->
-    <!--                    <div class="card mb-4 shadow-sm">-->
-    <!--                        <a href="product-detail.html">-->
-    <!--                            <img class="bd-placeholder-img card-img-top" width="100%" height="200"-->
-    <!--                                 src="/static/images/product/samsung-s3.webp">-->
-    <!--                        </a>-->
-    <!--                        <div class="card-body">-->
-    <!--                            <a href="product-detail.html">-->
-    <!--                                <h5>Samsung Galaxy S3</h5>-->
-    <!--                            </a>-->
-    <!--                            <h6>Điện thoại</h6>-->
-    <!--                            <p class="card-text">Sản phẩm của Samsung năm 2013</p>-->
-    <!--                            <div class="d-flex justify-content-between align-items-center">-->
-    <!--                                <div class="btn-group">-->
-    <!--                                    <a class="btn btn-sm btn-outline-secondary" href="product-detail.html">Xem-->
-    <!--                                        chi tiết</a>-->
-    <!--                                </div>-->
-    <!--                                <small class="text-muted text-right">-->
-    <!--                                    <s>12,600,000.00</s>-->
-    <!--                                    <b>12,000,000.00 vnđ</b>-->
-    <!--                                </small>-->
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-
-    <!--                <div class="col-md-4">-->
-    <!--                    <div class="card mb-4 shadow-sm">-->
-    <!--                        <a href="product-detail.html">-->
-    <!--                            <img class="bd-placeholder-img card-img-top" width="100%" height="200"-->
-    <!--                                 src="/static/images/product/samsung-s3.webp">-->
-    <!--                        </a>-->
-    <!--                        <div class="card-body">-->
-    <!--                            <a href="product-detail.html">-->
-    <!--                                <h5>Samsung Galaxy S3</h5>-->
-    <!--                            </a>-->
-    <!--                            <h6>Điện thoại</h6>-->
-    <!--                            <p class="card-text">Sản phẩm của Samsung năm 2013</p>-->
-    <!--                            <div class="d-flex justify-content-between align-items-center">-->
-    <!--                                <div class="btn-group">-->
-    <!--                                    <a class="btn btn-sm btn-outline-secondary" href="product-detail.html">Xem-->
-    <!--                                        chi tiết</a>-->
-    <!--                                </div>-->
-    <!--                                <small class="text-muted text-right">-->
-    <!--                                    <s>12,600,000.00</s>-->
-    <!--                                    <b>12,000,000.00 vnđ</b>-->
-    <!--                                </small>-->
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </div>-->
-
-    <!--            <div class="row">-->
-    <!--                <div class="col-md-4">-->
-    <!--                    <div class="card mb-4 shadow-sm">-->
-    <!--                        <a href="product-detail.html">-->
-    <!--                            <img class="bd-placeholder-img card-img-top" width="100%" height="200"-->
-    <!--                                 src="/static/images/product/samsung-s3.webp">-->
-    <!--                        </a>-->
-    <!--                        <div class="card-body">-->
-    <!--                            <a href="product-detail.html">-->
-    <!--                                <h5>Samsung Galaxy S3</h5>-->
-    <!--                            </a>-->
-    <!--                            <h6>Điện thoại</h6>-->
-    <!--                            <p class="card-text">Sản phẩm của Samsung năm 2013</p>-->
-    <!--                            <div class="d-flex justify-content-between align-items-center">-->
-    <!--                                <div class="btn-group">-->
-    <!--                                    <a class="btn btn-sm btn-outline-secondary" href="product-detail.html">Xem-->
-    <!--                                        chi tiết</a>-->
-    <!--                                </div>-->
-    <!--                                <small class="text-muted text-right">-->
-    <!--                                    <s>12,600,000.00</s>-->
-    <!--                                    <b>12,000,000.00 vnđ</b>-->
-    <!--                                </small>-->
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-
-    <!--                <div class="col-md-4">-->
-    <!--                    <div class="card mb-4 shadow-sm">-->
-    <!--                        <a href="product-detail.html">-->
-    <!--                            <img class="bd-placeholder-img card-img-top" width="100%" height="200"-->
-    <!--                                 src="/static/images/product/samsung-s3.webp">-->
-    <!--                        </a>-->
-    <!--                        <div class="card-body">-->
-    <!--                            <a href="product-detail.html">-->
-    <!--                                <h5>Samsung Galaxy S3</h5>-->
-    <!--                            </a>-->
-    <!--                            <h6>Điện thoại</h6>-->
-    <!--                            <p class="card-text">Sản phẩm của Samsung năm 2013</p>-->
-    <!--                            <div class="d-flex justify-content-between align-items-center">-->
-    <!--                                <div class="btn-group">-->
-    <!--                                    <a class="btn btn-sm btn-outline-secondary" href="product-detail.html">Xem-->
-    <!--                                        chi tiết</a>-->
-    <!--                                </div>-->
-    <!--                                <small class="text-muted text-right">-->
-    <!--                                    <s>12,600,000.00</s>-->
-    <!--                                    <b>12,000,000.00 vnđ</b>-->
-    <!--                                </small>-->
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-
-    <!--                <div class="col-md-4">-->
-    <!--                    <div class="card mb-4 shadow-sm">-->
-    <!--                        <a href="product-detail.html">-->
-    <!--                            <img class="bd-placeholder-img card-img-top" width="100%" height="200"-->
-    <!--                                 src="/static/images/product/samsung-s3.webp">-->
-    <!--                        </a>-->
-    <!--                        <div class="card-body">-->
-    <!--                            <a href="product-detail.html">-->
-    <!--                                <h5>Samsung Galaxy S3</h5>-->
-    <!--                            </a>-->
-    <!--                            <h6>Điện thoại</h6>-->
-    <!--                            <p class="card-text">Sản phẩm của Samsung năm 2013</p>-->
-    <!--                            <div class="d-flex justify-content-between align-items-center">-->
-    <!--                                <div class="btn-group">-->
-    <!--                                    <a class="btn btn-sm btn-outline-secondary" href="product-detail.html">Xem-->
-    <!--                                        chi tiết</a>-->
-    <!--                                </div>-->
-    <!--                                <small class="text-muted text-right">-->
-    <!--                                    <s>12,600,000.00</s>-->
-    <!--                                    <b>12,000,000.00 vnđ</b>-->
-    <!--                                </small>-->
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
-
 </div>
-
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
-
 </html>

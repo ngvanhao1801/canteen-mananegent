@@ -19,7 +19,11 @@ public class Ingredient {
 	@Column(name = "id")
 	private int id;
 
+	private byte[] image;
+
 	private String name;
+
+	private String description;
 
 	private int quantity;
 

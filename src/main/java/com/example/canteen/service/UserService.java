@@ -3,8 +3,8 @@ package com.example.canteen.service;
 import com.example.canteen.dto.UserDto;
 import com.example.canteen.entity.Profile;
 import com.example.canteen.entity.User;
-import com.example.canteen.repository.ProfileReponsitory;
-import com.example.canteen.repository.UserReponsitory;
+import com.example.canteen.repository.ProfileRepository;
+import com.example.canteen.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -13,13 +13,13 @@ import java.time.format.DateTimeFormatter;
 @Service
 public class UserService {
 
-	private final UserReponsitory userReponsitory;
+	private final UserRepository userRepository;
 
-	private final ProfileReponsitory profileReponsitory;
+	private final ProfileRepository profileRepository;
 
-	public UserService(UserReponsitory userReponsitory, ProfileReponsitory profileReponsitory) {
-		this.userReponsitory = userReponsitory;
-		this.profileReponsitory = profileReponsitory;
+	public UserService(UserRepository userRepository, ProfileRepository profileRepository) {
+		this.userRepository = userRepository;
+		this.profileRepository = profileRepository;
 	}
 
 	public void save(UserDto userDto) {
@@ -27,6 +27,7 @@ public class UserService {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 		String creationDate = Date.format(formatter);
 		User user = new User(userDto.getEmail(),
+				userDto.getFullName(),
 				userDto.getUserDisplayName(),
 				".",
 				0,
@@ -44,21 +45,21 @@ public class UserService {
 				"Address",
 				user
 		);
-		userReponsitory.save(user);
-		profileReponsitory.save(profile);
+		userRepository.save(user);
+		profileRepository.save(profile);
 	}
 
 	public Boolean checkPasswordUser(String email, String password) {
-		User user = userReponsitory.findUserByEmail(email);
+		User user = userRepository.findUserByEmail(email);
 		return user.getPassword().equals(password);
 	}
 
 	public Boolean checkUserByEmail(String email) {
-		User user = userReponsitory.findUserByEmail(email);
+		User user = userRepository.findUserByEmail(email);
 		return user != null;
 	}
 
 	public User getUserByEmail(String email) {
-		return userReponsitory.getUserByEmail(email);
+		return userRepository.getUserByEmail(email);
 	}
 }

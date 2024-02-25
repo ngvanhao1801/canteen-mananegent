@@ -9,6 +9,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDto implements Serializable {
+  private String fullName;
   private String Email;
   private String UserDisplayName;
   private String Password;

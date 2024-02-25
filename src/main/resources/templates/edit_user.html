@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Product</title>
     <link rel="stylesheet" type="text/css" href="/static/css/admin.css"/>
-    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.15.4/css/ionicons.min.css">-->
-    <!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"-->
-    <!--          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"-->
+    <!--          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
 </head>
+
 <body>
 <div class="container">
     <div class="navigation">
@@ -48,7 +49,7 @@
                 </a>
             </li>
             <li>
-                <a href="/ingredients">
+                <a href="/available_publisher">
                         <span class="icon">
                             <ion-icon name="leaf-outline"></ion-icon>
                         </span>
@@ -64,7 +65,7 @@
                 </a>
             </li>
             <li>
-                <a href="/users">
+                <a href="/available_users">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
@@ -80,7 +81,7 @@
                 </a>
             </li>
             <li>
-                <a href="dashboard.html">
+                <a href="#">
                         <span class="icon">
                             <ion-icon name="bar-chart-outline"></ion-icon>
                         </span>
@@ -98,7 +99,6 @@
         </ul>
     </div>
 </div>
-
 <div class="main">
     <div class="topbar">
         <div class="toggle">
@@ -122,14 +122,56 @@
         </script>
     </div>
 
-    <div class="detail">
-        <img src="/static/images/canteen.jpg" width="789" height="579"/>
+    <div class="container my-5 p-5" style="border: 1px solid black;">
+        <h2 class="text-center">Sửa thông tin người dùng</h2>
+        <form class="col-md-4 offset-md-4" th:action="@{/save_user}" method="POST" th:object="${user}">
+            <input type="hidden" name="id" th:value="${user.id}"/>
+
+            <div class="mb-3">
+                <label for="fullName" class="form-label">Họ và tên người dùng </label>
+                <input id="fullName" type="text" class="form-control" name="fullName" th:value="${user.fullName}"
+                       placeholder="Nhập họ và tên cho người dùng">
+            </div>
+            <div class="mb-3">
+                <label for="userDisplayName" class="form-label">Tên đăng nhập </label>
+                <input id="userDisplayName" type="text" class="form-control" name="userDisplayName"
+                       th:value="${user.userDisplayName}"
+                       placeholder="Nhập miêu tả cho người dùng">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email </label>
+                <input id="email" type="text" class="form-control" name="email" th:value="${user.email}"
+                       placeholder="Nhập email cho người dùng">
+                <p th:text="${errorMessage}" style="color: red"></p>
+            </div>
+
+            <div class="mb-3">
+                <label for="role" class="form-label">Email </label>
+                <input id="role" type="text" class="form-control" name="role" th:value="${user.role}"
+                       placeholder="Nhập người dùng">
+            </div>
+
+            <div class="mb-3">
+                <label for="creationDate" class="form-label">Email </label>
+                <input id="creationDate" type="date" class="form-control" name="creationDate"
+                       th:value="${user.creationDate}"
+                       placeholder="Nhập ngày tạo người dùng">
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password </label>
+                <input id="password" type="password" class="form-control" name="password" th:value="${user.password}"
+                       placeholder="Nhập password người dùng">
+            </div>
+
+            <center>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </center>
+        </form>
     </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </div>
-
-
-<!--icon-->
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

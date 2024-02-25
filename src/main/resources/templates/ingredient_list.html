@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Product</title>
     <link rel="stylesheet" type="text/css" href="/static/css/admin.css"/>
-    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.15.4/css/ionicons.min.css">-->
-    <!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"-->
-    <!--          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 <div class="container">
@@ -80,7 +79,7 @@
                 </a>
             </li>
             <li>
-                <a href="dashboard.html">
+                <a href="#">
                         <span class="icon">
                             <ion-icon name="bar-chart-outline"></ion-icon>
                         </span>
@@ -98,7 +97,6 @@
         </ul>
     </div>
 </div>
-
 <div class="main">
     <div class="topbar">
         <div class="toggle">
@@ -120,15 +118,72 @@
                 }
             }
         </script>
+
+    </div>
+    <!--    <div class="text-center">-->
+    <!--        <form class="form-inline mt-2 mt-md-0" method="get" action="#">-->
+    <!--            <input class="form-control mr-sm-2" type="text" placeholder="Tìm kiếm" aria-label="Search"-->
+    <!--                   name="keyword_tensanpham">-->
+    <!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>-->
+    <!--        </form>-->
+    <!--    </div>-->
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading" style="text-align: center; color: #0f6674">Danh sách Nguyên liệu</h1>
+        </div>
+    </section>
+    <div class="col-md-3">
+        <div class="text-right">
+            <a href="add_ingredient" class="btn btn-primary" style="margin-right: 20px">Thêm Nguyên liệu</a>
+        </div>
+    </div>
+    <div class="py-5 bg-light" style="margin-left: 50px; margin-right: 100px; margin-top: 30px">
+        <div class="container">
+            <div class="row">
+                <div th:each="ingredient : ${ingredients}" class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <a>
+                            <img th:if="${ingredient.image}"
+                                 src="@{'/ingredientImage?id=' + ${ingredient.id}}"
+                                 class="bd-placeholder-img card-img-top" width="100%" height="200" alt="Ingredient Image">
+                            <img th:unless="${ingredient.image != null}" src="/static/images/canteen.jpg"
+                                 class="bd-placeholder-img card-img-top" width="100%" height="200" alt="Default Image">
+                        </a>
+
+                        <div class="card-body">
+                            <a>
+                                <h5 th:text="${ingredient.name}">Tên Nguyên liệu</h5>
+                            </a>
+                            <p th:text="${ingredient.description}">Miêu tả Nguyên liệu</p>
+                            <div>
+                                <div class="btn-group">
+                                    <a href="#"
+                                       class="btn btn-sm btn-outline-secondary">Xem chi tiết</a>
+                                </div>
+                            </div>
+                            <div class="d-flex ">
+                                <small><b th:text="'&#x20AB;' + ${ingredient.price}">Giá: </b></small>
+                                <div>
+                                    <a style="color:blue; margin-right: 20px; text-decoration: none; margin-left: 200px"
+                                       th:href="@{/editIngredient/{id}(id=${ingredient.id})}">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a style="color:red;" th:href="@{/deleteIngredient/{id}(id=${ingredient.id})}"
+                                       onclick="if (!(confirm('Bạn có chắc chắn muốn xóa thông tin nguyên liệu này?'))) return false">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="detail">
-        <img src="/static/images/canteen.jpg" width="789" height="579"/>
-    </div>
 </div>
-
-
-<!--icon-->
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
