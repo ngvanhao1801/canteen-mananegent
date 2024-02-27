@@ -124,8 +124,8 @@
 
     <div class="container my-5 p-5" style="border: 1px solid black;">
         <h2 class="text-center">Sửa thông tin nguyên liệu</h2>
-        <form class="col-md-4 offset-md-4" th:action="@{/save_ingredient}" method="POST" th:object="${ingredient}">
-            <input type="hidden" name="id" th:value="${ingredient.id}"/>
+        <form class="col-md-4 offset-md-4" th:action="@{/save}" method="POST" th:object="${product}">
+            <input type="hidden" name="id" th:value="${product.id}"/>
 
             <div class="mb-3">
                 <label for="avatar" class="form-label">Ảnh nguyên liệu</label>
@@ -134,17 +134,17 @@
 
             <div class="mb-3">
                 <label for="name" class="form-label">Tên nguyên liệu </label>
-                <input id="name" type="text" class="form-control" name="name" th:value="${ingredient.name}"
+                <input id="name" type="text" class="form-control" name="name" th:value="${product.name}"
                        placeholder="Nhập tên cho nguyên liệu">
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Miêu tả nguyên liệu </label>
-                <input id="description" type="text" class="form-control" name="description" th:value="${ingredient.description}"
+                <input id="description" type="text" class="form-control" name="description" th:value="${product.description}"
                        placeholder="Nhập miêu tả cho nguyên liệu">
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Giá </label>
-                <input id="price" type="number" class="form-control" name="price" th:value="${ingredient.price}"
+                <input id="price" type="number" class="form-control" name="price" th:value="${product.price}"
                        placeholder="Nhập giá cho nguyên liệu">
             </div>
 

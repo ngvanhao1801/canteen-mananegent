@@ -35,16 +35,6 @@ public class IngredientController {
     return "ingredient_list";
   }
 
-//  @GetMapping("/ingredientImage")
-//  public ResponseEntity<?> getIngredientImage(@RequestParam("id") int id) {
-//    Ingredient ingredient = ingredientRepository.findById(id);
-//    byte[] imageData = ingredient.getImage();
-//
-//    return ResponseEntity.ok()
-//        .contentType(MediaType.IMAGE_PNG)
-//        .body(imageData);
-//  }
-
   @PostMapping("/save_ingredient")
   public String saveIngredient(@ModelAttribute Ingredient ingredient, Model model) {
     errorMessage = "";
