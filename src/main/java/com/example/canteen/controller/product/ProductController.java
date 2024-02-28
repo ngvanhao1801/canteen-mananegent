@@ -7,7 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -49,8 +51,17 @@ public class ProductController {
   }
 
   @PostMapping("/save")
-  public String saveProduct(@ModelAttribute Product product, Model model) {
+  public String saveProduct(@ModelAttribute Product product, Model model, @RequestParam("image") MultipartFile image) {
     errorMessage = "";
+    try {
+      if (!image.isEmpty()) {
+        byte[] imageData = image.getBytes();
+        product.setImage(imageData);
+      }
+    } catch (IOException e) {
+      throw new RuntimeException("Không thể xử lý tệp hình ảnh.", e);
+    }
+
     if (!isEdit && productRepository.existsById(product.getId())) {
       isEdit = false;
       errorMessage = "Đã tồn tại id = " + product.getId();
@@ -61,6 +72,7 @@ public class ProductController {
     productRepository.save(product);
     return "redirect:/products";
   }
+
 
   @RequestMapping("/editProduct/{id}")
   public String editLecturer(@PathVariable("id") int id, Model model) {

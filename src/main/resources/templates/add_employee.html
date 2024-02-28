@@ -33,7 +33,7 @@
             </li>
 
             <li>
-                <a href="/available_categories">
+                <a href="#">
                         <span class="icon">
                             <ion-icon name="folder"></ion-icon>
                         </span>
@@ -57,7 +57,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/employees">
                         <span class="icon">
                             <ion-icon name="person-circle-outline"></ion-icon>
                         </span>
@@ -81,7 +81,7 @@
                 </a>
             </li>
             <li>
-                <a href="chart.html">
+                <a href="/chart.html">
                         <span class="icon">
                             <ion-icon name="bar-chart-outline"></ion-icon>
                         </span>
@@ -140,16 +140,21 @@
             </div>
 
             <div class="mb-3">
-                <label for="description" class="form-label">Miêu tả nhân viên </label>
-                <input id="description" type="text" class="form-control" name="description"
-                       placeholder="Nhập miêu tả cho nhân viên"
-                       required>
+                <label for="email" class="form-label">Email </label>
+                <input id="email" type="email" class="form-control" name="email"
+                       placeholder="example@com.vn" required>
             </div>
 
             <div class="mb-3">
-                <label for="price" class="form-label">Giá </label>
-                <input id="price" type="number" class="form-control" name="price" placeholder="Nhập giá cho nhân viên"
-                       required>
+                <label for="position" class="form-label">Chức vụ </label>
+                <input id="position" type="text" class="form-control" name="position"
+                       placeholder="Nhập chức vụ cho nhân viên" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="phoneNumber" class="form-label">Số điện thoại </label>
+                <input id="phoneNumber" type="text" class="form-control" name="phoneNumber"
+                       placeholder="Nhập số điện thoại cho nhân viên" required>
             </div>
             <center>
                 <button type="submit" class="btn btn-primary">Submit</button>

@@ -63,7 +63,7 @@
                 </a>
             </li>
             <li>
-                <a href="/available_users">
+                <a href="/users">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
@@ -79,7 +79,7 @@
                 </a>
             </li>
             <li>
-                <a href="dashboard.html">
+                <a href="chart.html">
                         <span class="icon">
                             <ion-icon name="bar-chart-outline"></ion-icon>
                         </span>
@@ -120,13 +120,13 @@
         </script>
 
     </div>
-<!--    <div class="text-center">-->
-<!--        <form class="form-inline mt-2 mt-md-0" method="get" action="#">-->
-<!--            <input class="form-control mr-sm-2" type="text" placeholder="Tìm kiếm" aria-label="Search"-->
-<!--                   name="keyword_tensanpham">-->
-<!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>-->
-<!--        </form>-->
-<!--    </div>-->
+    <!--    <div class="text-center">-->
+    <!--        <form class="form-inline mt-2 mt-md-0" method="get" action="#">-->
+    <!--            <input class="form-control mr-sm-2" type="text" placeholder="Tìm kiếm" aria-label="Search"-->
+    <!--                   name="keyword_tensanpham">-->
+    <!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>-->
+    <!--        </form>-->
+    <!--    </div>-->
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading" style="text-align: center; color: #0f6674">Danh sách Món ăn</h1>
@@ -138,18 +138,255 @@
         </div>
     </div>
     <div class="py-5 bg-light" style="margin-left: 50px; margin-right: 100px; margin-top: 30px">
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-md-4">-->
+<!--                    <div class="card mb-4 shadow-sm">-->
+<!--                        <a href="product-detail.html">-->
+<!--                            <img class="bd-placeholder-img card-img-top" width="100%" height="200"-->
+<!--                                 src="/static/images/phobo.png">-->
+<!--                        </a>-->
+<!--                        <div class="card-body">-->
+<!--                            <a href="product-detail.html">-->
+<!--                                <h5>Phở bò</h5>-->
+<!--                            </a>-->
+<!--                            <h6>Chi tiết:</h6>-->
+<!--                            <p class="card-text">Phở bò tươi ngon</p>-->
+<!--                            <div class="d-flex justify-content-between align-items-center">-->
+<!--                                <div class="btn-group">-->
+<!--                                    <a class="btn btn-sm btn-outline-secondary" href="product-detail.html">Xem-->
+<!--                                        chi tiết</a>-->
+<!--                                </div>-->
+<!--                                <small class="text-right">-->
+<!--                                    <b>35.000 vnđ</b>-->
+<!--                                </small>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-md-4">-->
+<!--                    <div class="card mb-4 shadow-sm">-->
+<!--                        <a href="product-detail.html">-->
+<!--                            <img class="bd-placeholder-img card-img-top" width="100%" height="200"-->
+<!--                                 src="/static/images/comrang.png">-->
+<!--                        </a>-->
+<!--                        <div class="card-body">-->
+<!--                            <a href="product-detail.html">-->
+<!--                                <h5>Cơm rang</h5>-->
+<!--                            </a>-->
+<!--                            <h6>Chi tiết:</h6>-->
+<!--                            <p class="card-text">Cơm rang dưa bò thơm ngon</p>-->
+<!--                            <div class="d-flex justify-content-between align-items-center">-->
+<!--                                <div class="btn-group">-->
+<!--                                    <a class="btn btn-sm btn-outline-secondary" href="product-detail.html">Xem-->
+<!--                                        chi tiết</a>-->
+<!--                                </div>-->
+<!--                                <small class="text-right">-->
+<!--                                    <b>35.000 vnđ</b>-->
+<!--                                </small>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-md-4">-->
+<!--                    <div class="card mb-4 shadow-sm">-->
+<!--                        <a href="product-detail.html">-->
+<!--                            <img class="bd-placeholder-img card-img-top" width="100%" height="200"-->
+<!--                                 src="/static/images/banhbao.png">-->
+<!--                        </a>-->
+<!--                        <div class="card-body">-->
+<!--                            <a href="product-detail.html">-->
+<!--                                <h5>Bánh bao</h5>-->
+<!--                            </a>-->
+<!--                            <h6>Chi tiết:</h6>-->
+<!--                            <p class="card-text">Bánh bao nhà làm, chất lượng cao</p>-->
+<!--                            <div class="d-flex justify-content-between align-items-center">-->
+<!--                                <div class="btn-group">-->
+<!--                                    <a class="btn btn-sm btn-outline-secondary" href="product-detail.html">Xem-->
+<!--                                        chi tiết</a>-->
+<!--                                </div>-->
+<!--                                <small class="text-right">-->
+<!--                                    <b>10.000 vnđ</b>-->
+<!--                                </small>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="row">-->
+<!--                <div class="col-md-4">-->
+<!--                    <div class="card mb-4 shadow-sm">-->
+<!--                        <a href="product-detail.html">-->
+<!--                            <img class="bd-placeholder-img card-img-top" width="100%" height="200"-->
+<!--                                 src="/static/images/banhmy.png">-->
+<!--                        </a>-->
+<!--                        <div class="card-body">-->
+<!--                            <a href="product-detail.html">-->
+<!--                                <h5>Bánh mỳ</h5>-->
+<!--                            </a>-->
+<!--                            <h6>Chi tiết:</h6>-->
+<!--                            <p class="card-text">Bánh mỳ pate trứng, thơm ngon</p>-->
+<!--                            <div class="d-flex justify-content-between align-items-center">-->
+<!--                                <div class="btn-group">-->
+<!--                                    <a class="btn btn-sm btn-outline-secondary" href="product-detail.html">Xem-->
+<!--                                        chi tiết</a>-->
+<!--                                </div>-->
+<!--                                <small class="text-right">-->
+<!--                                    <b>20.000 vnđ</b>-->
+<!--                                </small>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-md-4">-->
+<!--                    <div class="card mb-4 shadow-sm">-->
+<!--                        <a href="product-detail.html">-->
+<!--                            <img class="bd-placeholder-img card-img-top" width="100%" height="200"-->
+<!--                                 src="/static/images/banhcuon.png">-->
+<!--                        </a>-->
+<!--                        <div class="card-body">-->
+<!--                            <a href="product-detail.html">-->
+<!--                                <h5>Bánh cuốn</h5>-->
+<!--                            </a>-->
+<!--                            <h6>Chi tiết:</h6>-->
+<!--                            <p class="card-text">Bánh cuốn nóng hổi, thơm ngon</p>-->
+<!--                            <div class="d-flex justify-content-between align-items-center">-->
+<!--                                <div class="btn-group">-->
+<!--                                    <a class="btn btn-sm btn-outline-secondary" href="product-detail.html">Xem-->
+<!--                                        chi tiết</a>-->
+<!--                                </div>-->
+<!--                                <small class="text-right">-->
+<!--                                    <b>30.000 vnđ</b>-->
+<!--                                </small>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-md-4">-->
+<!--                    <div class="card mb-4 shadow-sm">-->
+<!--                        <a href="product-detail.html">-->
+<!--                            <img class="bd-placeholder-img card-img-top" width="100%" height="200"-->
+<!--                                 src="/static/images/Mi-goi-xao-hai-san.png">-->
+<!--                        </a>-->
+<!--                        <div class="card-body">-->
+<!--                            <a href="product-detail.html">-->
+<!--                                <h5>Mì xào</h5>-->
+<!--                            </a>-->
+<!--                            <h6>Chi tiết:</h6>-->
+<!--                            <p class="card-text">Mì xào hải sản tươi ngon</p>-->
+<!--                            <div class="d-flex justify-content-between align-items-center">-->
+<!--                                <div class="btn-group">-->
+<!--                                    <a class="btn btn-sm btn-outline-secondary" href="product-detail.html">Xem-->
+<!--                                        chi tiết</a>-->
+<!--                                </div>-->
+<!--                                <small class="text-right">-->
+<!--                                    <b>25.000 vnđ</b>-->
+<!--                                </small>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="row">-->
+<!--                <div class="col-md-4">-->
+<!--                    <div class="card mb-4 shadow-sm">-->
+<!--                        <a href="product-detail.html">-->
+<!--                            <img class="bd-placeholder-img card-img-top" width="100%" height="200"-->
+<!--                                 src="/static/images/">-->
+<!--                        </a>-->
+<!--                        <div class="card-body">-->
+<!--                            <a href="product-detail.html">-->
+<!--                                <h5>Samsung Galaxy S3</h5>-->
+<!--                            </a>-->
+<!--                            <h6>Chi tiết:</h6>-->
+<!--                            <p class="card-text">Sản phẩm của Samsung năm 2013</p>-->
+<!--                            <div class="d-flex justify-content-between align-items-center">-->
+<!--                                <div class="btn-group">-->
+<!--                                    <a class="btn btn-sm btn-outline-secondary" href="product-detail.html">Xem-->
+<!--                                        chi tiết</a>-->
+<!--                                </div>-->
+<!--                                <small class="text-muted text-right">-->
+<!--                                    <s>12,600,000.00</s>-->
+<!--                                    <b>12,000,000.00 vnđ</b>-->
+<!--                                </small>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-md-4">-->
+<!--                    <div class="card mb-4 shadow-sm">-->
+<!--                        <a href="product-detail.html">-->
+<!--                            <img class="bd-placeholder-img card-img-top" width="100%" height="200"-->
+<!--                                 src="/static/images/">-->
+<!--                        </a>-->
+<!--                        <div class="card-body">-->
+<!--                            <a href="product-detail.html">-->
+<!--                                <h5>Samsung Galaxy S3</h5>-->
+<!--                            </a>-->
+<!--                            <h6>Chi tiết:</h6>-->
+<!--                            <p class="card-text">Sản phẩm của Samsung năm 2013</p>-->
+<!--                            <div class="d-flex justify-content-between align-items-center">-->
+<!--                                <div class="btn-group">-->
+<!--                                    <a class="btn btn-sm btn-outline-secondary" href="product-detail.html">Xem-->
+<!--                                        chi tiết</a>-->
+<!--                                </div>-->
+<!--                                <small class="text-muted text-right">-->
+<!--                                    <s>12,600,000.00</s>-->
+<!--                                    <b>12,000,000.00 vnđ</b>-->
+<!--                                </small>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-md-4">-->
+<!--                    <div class="card mb-4 shadow-sm">-->
+<!--                        <a href="product-detail.html">-->
+<!--                            <img class="bd-placeholder-img card-img-top" width="100%" height="200"-->
+<!--                                 src="/static/images/">-->
+<!--                        </a>-->
+<!--                        <div class="card-body">-->
+<!--                            <a href="product-detail.html">-->
+<!--                                <h5>Samsung Galaxy S3</h5>-->
+<!--                            </a>-->
+<!--                            <h6>Chi tiết:</h6>-->
+<!--                            <p class="card-text">Sản phẩm của Samsung năm 2013</p>-->
+<!--                            <div class="d-flex justify-content-between align-items-center">-->
+<!--                                <div class="btn-group">-->
+<!--                                    <a class="btn btn-sm btn-outline-secondary" href="product-detail.html">Xem-->
+<!--                                        chi tiết</a>-->
+<!--                                </div>-->
+<!--                                <small class="text-muted text-right">-->
+<!--                                    <s>12,600,000.00</s>-->
+<!--                                    <b>12,000,000.00 vnđ</b>-->
+<!--                                </small>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+
+
+
         <div class="container">
             <div class="row">
                 <div th:each="product : ${products}" class="col-md-4">
                     <div class="card mb-4 shadow-sm">
                         <a>
-                            <img th:if="${product.image}"
-                                 src="@{'/productImage?id=' + ${product.id}}"
-                                 class="bd-placeholder-img card-img-top" width="100%" height="200" alt="Product Image">
-                            <img th:unless="${product.image != null}" src="/static/images/canteen.jpg"
-                                 class="bd-placeholder-img card-img-top" width="100%" height="200" alt="Default Image">
+                            <img th:if="${product.image}" class="bd-placeholder-img card-img-top" width="100%"
+                                 height="200" alt="Product Image"
+                                 th:src="@{'data:image/jpeg;base64,' + ${#strings.encodeBase64(product.image)}}"/>
+                            <!--                        <img th:unless="${product.image != null}" src="/static/images/phobo.png" class="bd-placeholder-img card-img-top" width="100%" height="200" alt="Default Image">-->
                         </a>
-
                         <div class="card-body">
                             <a>
                                 <h5 th:text="${product.name}">Tên món ăn</h5>
@@ -157,11 +394,10 @@
                             <p th:text="${product.description}">Miêu tả món ăn</p>
                             <div>
                                 <div class="btn-group">
-                                    <a href="#"
-                                       class="btn btn-sm btn-outline-secondary">Xem chi tiết</a>
+                                    <a href="#" class="btn btn-sm btn-outline-secondary">Xem chi tiết</a>
                                 </div>
                             </div>
-                            <div class="d-flex ">
+                            <div class="d-flex">
                                 <small><b th:text="'&#x20AB;' + ${product.price}">Giá: </b></small>
                                 <div>
                                     <a style="color:blue; margin-right: 20px; text-decoration: none; margin-left: 150px"
@@ -174,15 +410,12 @@
                                     </a>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
