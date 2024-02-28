@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Product</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/admin.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="navigation">
+        <ul>
+            <li>
+                <a href="#">
+                        <span class="icon">
+                            <ion-icon name="menu-outline"></ion-icon>
+                        </span>
+                    <span class="title">HỆ THỐNG QUẢN LÝ</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/home">
+                        <span class="icon">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </span>
+                    <span class="title">Trang chủ</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/available_categories">
+                        <span class="icon">
+                            <ion-icon name="folder"></ion-icon>
+                        </span>
+                    <span class="title">Quản lý danh mục</span>
+                </a>
+            </li>
+            <li>
+                <a href="/products">
+                        <span class="icon">
+                            <ion-icon name="pizza"></ion-icon>
+                        </span>
+                    <span class="title">Quản lý món ăn</span>
+                </a>
+            </li>
+            <li>
+                <a href="/ingredients">
+                        <span class="icon">
+                            <ion-icon name="leaf-outline"></ion-icon>
+                        </span>
+                    <span class="title">Quản lý nguyên liệu</span>
+                </a>
+            </li>
+            <li>
+                <a href="/employees">
+                        <span class="icon">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                        </span>
+                    <span class="title">Quản lý nhân viên</span>
+                </a>
+            </li>
+            <li>
+                <a href="/available_users">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                    <span class="title">Quản lý người dùng</span>
+                </a>
+            </li>
+            <li>
+                <a href="/available_orders">
+                        <span class="icon">
+                            <ion-icon name="bag-handle-outline"></ion-icon>
+                        </span>
+                    <span class="title">Quản lý đơn hàng</span>
+                </a>
+            </li>
+            <li>
+                <a href="chart.html">
+                        <span class="icon">
+                            <ion-icon name="bar-chart-outline"></ion-icon>
+                        </span>
+                    <span class="title">Thống kê doanh thu</span>
+                </a>
+            </li>
+            <li>
+                <a href="/profile">
+                    <span class="icon">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                    </span>
+                    <span class="title">Thông tin tài khoản</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="main">
+    <div class="topbar">
+        <div class="toggle">
+            <span class="title" style="color: white">CANTEEN ĐH TÀI NGUYÊN MÔI TRƯỜNG</span>
+        </div>
+        <div class="logout">
+            <a href="#" onclick="confirmLogout()">
+        <span class="icon">
+             <ion-icon name="log-out-outline"></ion-icon>
+        </span>
+                <span class="title" style="font-size: 1.1em; color: white">Đăng xuất</span>
+            </a>
+        </div>
+
+        <script>
+            function confirmLogout() {
+                if (confirm("Bạn có chắc chắn muốn đăng xuất?")) {
+                    window.location.href = "/logout";
+                }
+            }
+        </script>
+
+    </div>
+    <div id="chartContainer">
+        <canvas id="productChart"></canvas>
+    </div>
+</div>
+
+<script>
+    var productData = {
+        labels: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+        datasets: [{
+            label: 'Số lượng sản phẩm',
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
+            data: [100, 120, 90, 110, 80, 100, 100, 120, 90, 110, 80, 100]
+        }]
+    };
+
+    var ctx = document.getElementById('productChart').getContext('2d');
+    var productChart = new Chart(ctx, {
+        type: 'bar',
+        data: productData,
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+</body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</html>
